@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="wrapper">
+    <div class="top-bar">
+        <span class="first">
+          <span class="highlight-bar"></span>
+          <a href="/" class="selected">主页</a></span>
+        <span class="top_fav">
+          <a href="{% url 'app:commit' %}" target="_blank">投稿链接</a></span>
+    </div>
+    <div id="first-content">
+        <div id="center-box-wrapper">
+            <div id="center-box">
+                <div id="center-logo">
+                    <a href="">
+                        <img src="{% static 'img/btlogo.png' %}" alt="磁力搜索"></a>
+                </div>
+                <div id="search-box">
+                    <form id="search-form" action="{% url 'app:search' %}" enctype="multipart/form-data" method="get" role="form">
+                        <input type="text" id="search" name="q" autocomplete="off" placeholder="搜索电影ฅ’ω’ฅ">
+                        <input type="submit" id="btnSearch" value="搜 索" class="blue"></form>
+                    <div class="info-box">
+                        <ul>
+                            <li>
+                                <a href="{% url 'app:search' %}?q=寻梦环游记">寻梦环游记</a></li>
+                            <li>
+                            <li>
+                                <a href="{% url 'app:search' %}?q=黑客帝国">黑客帝国</a></li>
+                            <li>
+                            <li>
+                                <a href="{% url 'app:search' %}?q=钢铁侠">钢铁侠</a></li>
+                            <li>
+                            <li>
+                                <a href="{% url 'app:search' %}?q=辩刑金刚">辩刑金刚</a></li>
+                            <li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="push"></div>
+</div>
+{% endblock content %}
+

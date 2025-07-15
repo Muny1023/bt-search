@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        /* 详情页容器 */
+        .detail-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 标题样式 */
+        .detail-container h1 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 28px;
+            border-left: 6px solid #3498db;
+            padding-left: 10px;
+        }
+
+        /* 链接样式 */
+        .detail-container p {
+            line-height: 1.8;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .detail-container p strong {
+            color: #333;
+            width: 80px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* 封面图片 */
+        .detail-container img {
+            max-width: 300px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 2px solid #eee;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .detail-container {
+                margin: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <div class="detail-container">
+        <h1>{{ object.title }}</h1>
+        <p><strong>链接：</strong> <a href="{{ object.url }}" target="_blank">{{ object.url }}</a></p>
+        <p><strong>封面：</strong>
+            {% if object.cover %}
+                <img src="{{ object.cover.url }}" alt="封面">
+            {% else %}
+                <span>暂无封面</span>
+            {% endif %}
+        </p>
+        <p><strong>大小：</strong> {{ object.size|default:"未知" }}</p>
+        <p><strong>热度：</strong> {{ object.hot }}</p>
+        <p><strong>描述：</strong> {{ object.desc|default:"暂无描述" }}</p>
+        <p><strong>创建时间：</strong> {{ object.timestamp|date:"Y-m-d H:i" }}</p>
+    </div>
+{% endblock content %}
